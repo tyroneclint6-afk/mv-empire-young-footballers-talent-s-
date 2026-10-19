@@ -1,293 +1,677 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MV Empire Scout | Discover Top Football Talent</title>
+    <title>MV Empire Scout - Jamaican Football Talent Showcase</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#FFD700',
+                            goldDark: '#D4AF37',
+                            green: '#009B3A',
+                            greenDark: '#006B28',
+                            black: '#0A0A0C',
+                            cardBg: '#141418',
+                            cardHover: '#1C1C22',
+                            border: '#2A2A35'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background-color: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
+            background-color: #0A0A0C;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
         }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, #0b2545, #134074);
-            color: #fff;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        header h1 {
-            font-size: 2.2rem;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+        ::-webkit-scrollbar-track {
+            background: #0A0A0C;
         }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A35;
+            border-radius: 4px;
         }
-
-        nav a {
-            color: #e0e1dd;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: background 0.3s, color 0.3s;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #009B3A;
         }
-
-        nav a:hover {
-            background-color: #8da9c4;
-            color: #0b2545;
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        /* Hero Banner */
-        .hero {
-            background: #134074;
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem;
-            border-bottom: 5px solid #8da9c4;
+        .jamaica-gradient-border {
+            border-image: linear-gradient(to right, #009B3A, #FFD700, #000000) 1;
         }
-
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #dcdcdc;
-        }
-
-        /* Container & Sections */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #0b2545;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: #134074;
-            display: block;
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Cards Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            background-color: #e2e8f0;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            color: #0b2545;
-            margin-bottom: 0.3rem;
-        }
-
-        .card-subtitle {
-            font-size: 0.95rem;
-            color: #134074;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .card-stats {
-            background: #f0f4f8;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .card-text {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        /* Footer */
-        footer {
-            background: #0b2545;
-            color: #fff;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #a0aec0;
+        .glass-nav {
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(12px);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-green selection:text-white">
 
-    <header>
-        <h1>MV Empire Scout</h1>
-        <nav>
-            <a href="#players">Players</a>
-            <a href="#coaches">Coaches</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-green to-brand-gold flex items-center justify-center font-black text-black text-xl shadow-lg shadow-brand-green/20">
+                    MV
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        MV EMPIRE <span class="text-brand-gold">SCOUT</span>
+                    </h1>
+                    <p class="text-xs text-emerald-400 font-medium">Jamaican Football Talent Directory</p>
+                </div>
+            </div>
+
+            <!-- Global Action Stats / Badge -->
+            <div class="hidden md:flex items-center gap-4 text-xs font-semibold">
+                <div class="bg-brand-cardBg border border-brand-border rounded-lg px-3 py-1.5 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+                    <span class="text-gray-300">U17 Reggae Boyz Scout Roster</span>
+                </div>
+                <div class="bg-brand-cardBg border border-brand-border rounded-lg px-3 py-1.5 flex items-center gap-2">
+                    <i class="fa-solid fa-users text-brand-gold"></i>
+                    <span id="player-count" class="text-gray-200">19 Players Cataloged</span>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <section class="hero">
-        <h2>Discover Top Football Talent</h2>
-        <p>Connecting the next generation of rising football stars and elite coaching staff with top scouts worldwide.</p>
-    </section>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
 
-    <main class="container">
-        
-        <!-- Players Section -->
-        <section id="players">
-            <h2 class="section-title">Featured Players</h2>
-            <div class="grid">
-                
-                <!-- Player 1 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x300/134074/FFFFFF?text=Player+Photo" alt="Player Photo">
-                    <div class="card-body">
-                        <h3 class="card-title">Marcus Vance</h3>
-                        <p class="card-subtitle">Forward | Age: 19</p>
-                        <div class="card-stats">
-                            <span><strong>Goals:</strong> 18</span>
-                            <span><strong>Assists:</strong> 7</span>
-                            <span><strong>Pace:</strong> 91</span>
-                        </div>
-                        <p class="card-text">Explosive attacker with exceptional pace and finishing ability. Strong off-the-ball movement and tactical discipline on counter-attacks.</p>
+        <!-- Hero & Featured Reel Section -->
+        <section class="mb-10 rounded-2xl bg-gradient-to-br from-brand-cardBg via-black to-brand-cardBg border border-brand-border p-6 md:p-8 relative overflow-hidden shadow-2xl">
+            <!-- Background Glows -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-brand-green/20 border border-brand-green/40 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        <i class="fa-solid fa-star text-brand-gold"></i> Official Scouting Hub
+                    </div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+                        Discover Jamaica’s Next <span class="gold-gradient-text">Football Stars</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                        Tracking and showcasing the top national U17 Reggae Boyz talent, overseas academy prospects, and high school standout athletes.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="scrollToRoster()" class="px-5 py-2.5 bg-brand-green hover:bg-brand-greenDark text-white font-bold rounded-xl transition duration-200 flex items-center gap-2 text-sm shadow-lg shadow-brand-green/30">
+                            <i class="fa-solid fa-list-check"></i> Explore Roster
+                        </button>
+                        <button onclick="openVideoModal('fOgZsk3U4DU', 'Get to know the U17 Reggae Boyz')" class="px-5 py-2.5 bg-brand-cardBg hover:bg-brand-cardHover text-brand-gold border border-brand-gold/40 font-bold rounded-xl transition duration-200 flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-circle-play"></i> Watch Full Roster Intro
+                        </button>
                     </div>
                 </div>
 
-                <!-- Player 2 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x300/0b2545/FFFFFF?text=Player+Photo" alt="Player Photo">
-                    <div class="card-body">
-                        <h3 class="card-title">David Sterling</h3>
-                        <p class="card-subtitle">Central Midfielder | Age: 21</p>
-                        <div class="card-stats">
-                            <span><strong>Pass Accuracy:</strong> 89%</span>
-                            <span><strong>Tackles:</strong> 42</span>
+                <!-- Featured Highlight Reels Grid -->
+                <div class="lg:col-span-7">
+                    <div class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-film text-brand-gold"></i> Featured Video Showcases
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Reel Card 1 -->
+                        <div onclick="openVideoModal('fOgZsk3U4DU', 'U17 Reggae Boyz Roster Intro')" class="group cursor-pointer bg-black/60 border border-brand-border hover:border-brand-gold rounded-xl overflow-hidden transition-all duration-300">
+                            <div class="relative aspect-video bg-black/80 flex items-center justify-center overflow-hidden">
+                                <img src="https://img.youtube.com/vi/fOgZsk3U4DU/hqdefault.jpg" alt="U17 Reggae Boyz" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-80 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div class="absolute w-10 h-10 rounded-full bg-brand-gold/90 text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-xs font-bold text-white group-hover:text-brand-gold transition truncate">U17 Reggae Boyz Intro</p>
+                                <p class="text-[11px] text-gray-400">Team squad feature & introductions</p>
+                            </div>
                         </div>
-                        <p class="card-text">Box-to-box midfielder with high work rate, composure under pressure, and superior vision for long-range distribution.</p>
+
+                        <!-- Reel Card 2 -->
+                        <div onclick="openVideoModal('nP1pWd2G_eY', 'Jamaican Football Skills & Drills')" class="group cursor-pointer bg-black/60 border border-brand-border hover:border-brand-gold rounded-xl overflow-hidden transition-all duration-300">
+                            <div class="relative aspect-video bg-black/80 flex items-center justify-center overflow-hidden">
+                                <img src="https://img.youtube.com/vi/nP1pWd2G_eY/hqdefault.jpg" alt="Skills Drills" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-80 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div class="absolute w-10 h-10 rounded-full bg-brand-gold/90 text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-xs font-bold text-white group-hover:text-brand-gold transition truncate">Skills & Drills Feature</p>
+                                <p class="text-[11px] text-gray-400">Technique & training showcase</p>
+                            </div>
+                        </div>
+
+                        <!-- Reel Card 3 -->
+                        <div onclick="openVideoModal('gy6MMD4W7mo', 'Mario Sims / Waterhouse FC Highlight')" class="group cursor-pointer bg-black/60 border border-brand-border hover:border-brand-gold rounded-xl overflow-hidden transition-all duration-300">
+                            <div class="relative aspect-video bg-black/80 flex items-center justify-center overflow-hidden">
+                                <img src="https://img.youtube.com/vi/gy6MMD4W7mo/hqdefault.jpg" alt="Mario Sims" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-80 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div class="absolute w-10 h-10 rounded-full bg-brand-gold/90 text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-xs font-bold text-white group-hover:text-brand-gold transition truncate">Mario Sims Highlights</p>
+                                <p class="text-[11px] text-gray-400">Waterhouse FC Free-kick strike</p>
+                            </div>
+                        </div>
+
+                        <!-- Reel Card 4 -->
+                        <div onclick="openVideoModal('gQFAyhri_ac', 'Players of Jamaican Origin World Talent')" class="group cursor-pointer bg-black/60 border border-brand-border hover:border-brand-gold rounded-xl overflow-hidden transition-all duration-300">
+                            <div class="relative aspect-video bg-black/80 flex items-center justify-center overflow-hidden">
+                                <img src="https://img.youtube.com/vi/gQFAyhri_ac/hqdefault.jpg" alt="Jamaican Heritage Pros" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-80 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div class="absolute w-10 h-10 rounded-full bg-brand-gold/90 text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+                            <div class="p-3">
+                                <p class="text-xs font-bold text-white group-hover:text-brand-gold transition truncate">Jamaican Origin Pros</p>
+                                <p class="text-[11px] text-gray-400">Sancho, Walker, Musiala, Toney</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Player 3 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x300/8da9c4/0b2545?text=Player+Photo" alt="Player Photo">
-                    <div class="card-body">
-                        <h3 class="card-title">Liam O'Connor</h3>
-                        <p class="card-subtitle">Center Back | Age: 20</p>
-                        <div class="card-stats">
-                            <span><strong>Aerial Duels:</strong> 82%</span>
-                            <span><strong>Interceptions:</strong> 38</span>
-                        </div>
-                        <p class="card-text">Commanding central defender known for physical dominance, aerial threat during set pieces, and leadership at the back.</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- Coaches Section -->
-        <section id="coaches">
-            <h2 class="section-title">Coaching Staff</h2>
-            <div class="grid">
+        <!-- Search & Filter Controls -->
+        <section id="roster-section" class="mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-brand-cardBg p-4 rounded-xl border border-brand-border">
                 
-                <!-- Coach 1 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x300/0b2545/FFFFFF?text=Coach+Photo" alt="Coach Photo">
-                    <div class="card-body">
-                        <h3 class="card-title">Coach Alexander Wright</h3>
-                        <p class="card-subtitle">Head Coach & Technical Director</p>
-                        <div class="card-stats">
-                            <span><strong>Experience:</strong> 12+ Yrs</span>
-                            <span><strong>License:</strong> UEFA A</span>
-                        </div>
-                        <p class="card-text">Specializes in tactical development, high-pressing systems, and player mental conditioning for professional readiness.</p>
-                    </div>
+                <!-- Search Input -->
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Search player name, school or team..." class="w-full pl-10 pr-4 py-2.5 bg-black/60 border border-brand-border rounded-lg text-sm text-white focus:outline-none focus:border-brand-green transition placeholder:text-gray-500">
                 </div>
 
-                <!-- Coach 2 -->
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x300/134074/FFFFFF?text=Coach+Photo" alt="Coach Photo">
-                    <div class="card-body">
-                        <h3 class="card-title">Coach Robert Taylor</h3>
-                        <p class="card-subtitle">Youth Development Specialist</p>
-                        <div class="card-stats">
-                            <span><strong>Experience:</strong> 8 Yrs</span>
-                            <span><strong>License:</strong> UEFA B</span>
-                        </div>
-                        <p class="card-text">Focused on technical mastery, positional awareness, and helping young talents transition smoothly into academy and professional leagues.</p>
-                    </div>
+                <!-- Position Filter Pills -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+                    <button onclick="filterPlayers('All')" class="filter-btn active px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-brand-green text-white">All</button>
+                    <button onclick="filterPlayers('Striker')" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-black/60 text-gray-300 hover:text-white hover:bg-brand-cardHover border border-brand-border">Strikers</button>
+                    <button onclick="filterPlayers('Winger')" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-black/60 text-gray-300 hover:text-white hover:bg-brand-cardHover border border-brand-border">Wingers</button>
+                    <button onclick="filterPlayers('Midfielder')" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-black/60 text-gray-300 hover:text-white hover:bg-brand-cardHover border border-brand-border">Midfielders</button>
+                    <button onclick="filterPlayers('Defender')" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-black/60 text-gray-300 hover:text-white hover:bg-brand-cardHover border border-brand-border">Defenders</button>
+                    <button onclick="filterPlayers('Goalkeeper')" class="filter-btn px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-black/60 text-gray-300 hover:text-white hover:bg-brand-cardHover border border-brand-border">Goalkeepers</button>
                 </div>
+            </div>
+        </section>
 
+        <!-- Player Directory Grid -->
+        <section>
+            <div id="player-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Cards dynamically rendered via JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-16 bg-brand-cardBg border border-brand-border rounded-2xl p-8">
+                <i class="fa-solid fa-user-slash text-4xl text-gray-600 mb-3"></i>
+                <h3 class="text-lg font-bold text-white">No players found</h3>
+                <p class="text-gray-400 text-sm mt-1">Try adjusting your search query or position filters.</p>
+                <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-green text-white font-semibold text-xs rounded-lg">Reset Filters</button>
             </div>
         </section>
 
     </main>
 
-    <footer id="contact">
-        <p>&copy; 2026 MV Empire Scout. All rights reserved.</p>
-        <p>Contact: info@mvempirescout.com</p>
+    <!-- Footer -->
+    <footer class="bg-black border-t border-brand-border py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-brand-green text-white font-bold flex items-center justify-center text-xs">MV</div>
+                <span class="text-sm font-bold text-white">MV Empire Scout</span>
+                <span class="text-xs text-gray-500">| Jamaican Football Youth Talent Platform</span>
+            </div>
+            <p class="text-xs text-gray-500 text-center md:text-right">
+                Dedicated to discovering and highlighting Jamaica's football stars of tomorrow.
+            </p>
+        </div>
     </footer>
 
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-brand-cardBg border border-brand-border rounded-2xl overflow-hidden shadow-2xl">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-4 border-b border-brand-border bg-black/50">
+                <h3 id="modal-title" class="text-sm md:text-base font-bold text-white flex items-center gap-2 truncate">
+                    <i class="fa-brands fa-youtube text-red-500"></i> Player Highlight Video
+                </h3>
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-brand-cardHover text-gray-300 hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <!-- Video Iframe Container -->
+            <div class="relative aspect-video w-full bg-black">
+                <iframe id="modal-iframe" class="w-full h-full" src="" title="Highlight Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-black/50 flex justify-between items-center text-xs text-gray-400">
+                <span>MV Empire Scouting Hub Highlight Reel</span>
+                <a id="modal-external-link" href="#" target="_blank" rel="noopener noreferrer" class="text-brand-gold hover:underline flex items-center gap-1">
+                    Open in YouTube <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Player Database
+        const players = [
+            {
+                id: 1,
+                name: "Earl Miller",
+                position: "Striker",
+                category: "Striker",
+                school: "Glenmuir High School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Clinical goalscorer leading the frontline with explosive runs, aerial ability, and composure under pressure."
+            },
+            {
+                id: 2,
+                name: "Earl Ennis",
+                position: "Central Midfielder",
+                category: "Midfielder",
+                school: "Mount Pleasant Academy",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/nP1pWd2G_eY",
+                videoId: "nP1pWd2G_eY",
+                bio: "Visionary playmaker with supreme ball retention, controlling the tempo from the center."
+            },
+            {
+                id: 3,
+                name: "Nairon Allen",
+                position: "Right Wing",
+                category: "Winger",
+                school: "Denham Town High School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "High-speed 1v1 specialist with sharp dribbling and lethal crossing capabilities from the right flank."
+            },
+            {
+                id: 4,
+                name: "Jamari Nolan",
+                position: "Center Back",
+                category: "Defender",
+                school: "Mount Pleasant Academy",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Commanding defender who reads the game exceptionally well, strong in tackles and aerial duels."
+            },
+            {
+                id: 5,
+                name: "Jevani Taylor",
+                position: "Midfielder",
+                category: "Midfielder",
+                school: "Jamaica College",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/nP1pWd2G_eY",
+                videoId: "nP1pWd2G_eY",
+                bio: "Tenacious box-to-box midfielder with relentless energy, recovering possession and linking attack."
+            },
+            {
+                id: 6,
+                name: "Owen Jones",
+                position: "Midfielder",
+                category: "Midfielder",
+                school: "Mount Pleasant Academy",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Tactically disciplined central presence providing seamless transitions and clean distribution."
+            },
+            {
+                id: 7,
+                name: "Zion Dos",
+                position: "Midfielder",
+                category: "Midfielder",
+                school: "Kingston College",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/nP1pWd2G_eY",
+                videoId: "nP1pWd2G_eY",
+                bio: "Creative midfielder known for precise passing in tight spaces and quick attacking decision-making."
+            },
+            {
+                id: 8,
+                name: "Damari Williams",
+                position: "Central Mid / Right Back",
+                category: "Midfielder",
+                school: "Excelsior High School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Versatile player comfortable orchestrating play from midfield or pushing forward from right back."
+            },
+            {
+                id: 9,
+                name: "Javaughn Anglin",
+                position: "Left Wing",
+                category: "Winger",
+                school: "Manning's School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Dynamic left winger who cuts inside with pace to create scoring opportunities and test keepers."
+            },
+            {
+                id: 10,
+                name: "Jekquan Brown",
+                position: "Center Back",
+                category: "Defender",
+                school: "Portmore United",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Physical center back providing defensive stability, athletic coverage, and strong leadership."
+            },
+            {
+                id: 11,
+                name: "Seymour Reid",
+                position: "Striker",
+                category: "Striker",
+                school: "NYCFC / Ex-Denham Town",
+                tag: "Overseas Prospect",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Overseas academy prospect with dangerous movement inside the penalty box and sharp instincts."
+            },
+            {
+                id: 12,
+                name: "Zinadine McLean",
+                position: "Left Back",
+                category: "Defender",
+                school: "Russell Academy / Ex-JC",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Modern fullback offering strong defensive isolation and overlapping threat down the left channel."
+            },
+            {
+                id: 13,
+                name: "Dario White",
+                position: "Striker / Midfielder",
+                category: "Striker",
+                school: "Portland Timbers / Ex-Ardenne",
+                tag: "Overseas Prospect",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Multi-positional attacking threat gaining MLS academy experience with sharp finishing skills."
+            },
+            {
+                id: 14,
+                name: "Justin Murray",
+                position: "Goalkeeper",
+                category: "Goalkeeper",
+                school: "Glenmuir High School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Agile shot-stopper commanding his penalty area with confidence and strong vocal communication."
+            },
+            {
+                id: 15,
+                name: "Janain Steadman",
+                position: "Goalkeeper",
+                category: "Goalkeeper",
+                school: "STETHS",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Reflexive keeper with excellent reaction time and dependable hands under high pressure."
+            },
+            {
+                id: 16,
+                name: "Kevin J",
+                position: "Goalkeeper",
+                category: "Goalkeeper",
+                school: "Jamaica College",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Dominant aerial keeper with crisp distribution skills to quickly launch counter-attacks."
+            },
+            {
+                id: 17,
+                name: "Jared James",
+                position: "Goalkeeper",
+                category: "Goalkeeper",
+                school: "Bog Walk High School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Consistent shot-stopper displaying great positioning and quick lateral movement across the goal line."
+            },
+            {
+                id: 18,
+                name: "Jamari Blair",
+                position: "Goalkeeper",
+                category: "Goalkeeper",
+                school: "Manning's School",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Composed young keeper with great range on high crosses and sharp instincts in 1v1 situations."
+            },
+            {
+                id: 19,
+                name: "Carla Tingling",
+                position: "Goalkeeper",
+                category: "Goalkeeper",
+                school: "Cornwall College",
+                tag: "U17 Reggae Boyz",
+                videoUrl: "https://www.youtube.com/embed/fOgZsk3U4DU",
+                videoId: "fOgZsk3U4DU",
+                bio: "Promising net-minder known for sharp focus, solid footwork, and decisive box clearing."
+            }
+        ];
+
+        let currentCategory = "All";
+        let searchQuery = "";
+
+        // Function to render player cards
+        function renderPlayers() {
+            const grid = document.getElementById('player-grid');
+            const emptyState = document.getElementById('empty-state');
+            grid.innerHTML = '';
+
+            const filtered = players.filter(player => {
+                const matchesCategory = (currentCategory === "All") || 
+                    (currentCategory === "Defender" && (player.category === "Defender" || player.position.includes("Back"))) ||
+                    (player.category === currentCategory);
+
+                const matchesSearch = player.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      player.school.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                      player.position.toLowerCase().includes(searchQuery.toLowerCase());
+
+                return matchesCategory && matchesSearch;
+            });
+
+            document.getElementById('player-count').textContent = `${filtered.length} Players Listed`;
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                filtered.forEach(player => {
+                    const card = document.createElement('div');
+                    card.className = "bg-brand-cardBg border border-brand-border hover:border-brand-green/60 rounded-xl overflow-hidden transition duration-300 flex flex-col justify-between group shadow-lg";
+
+                    // Badge Styling
+                    let badgeColor = "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
+                    if (player.category === "Striker") badgeColor = "bg-amber-500/20 text-amber-400 border-amber-500/30";
+                    if (player.category === "Goalkeeper") badgeColor = "bg-cyan-500/20 text-cyan-400 border-cyan-500/30";
+                    if (player.category === "Defender") badgeColor = "bg-blue-500/20 text-blue-400 border-blue-500/30";
+
+                    card.innerHTML = `
+                        <div>
+                            <!-- Card Header Image/Thumbnail -->
+                            <div class="relative aspect-video bg-black overflow-hidden group">
+                                <img src="https://img.youtube.com/vi/${player.videoId}/hqdefault.jpg" alt="${player.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 opacity-70 group-hover:opacity-90">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-cardBg via-transparent to-black/40"></div>
+                                
+                                <span class="absolute top-3 left-3 text-[10px] font-bold tracking-wider uppercase border px-2.5 py-0.5 rounded-md backdrop-blur-md ${badgeColor}">
+                                    ${player.position}
+                                </span>
+
+                                <span class="absolute top-3 right-3 text-[10px] font-extrabold bg-brand-gold text-black px-2 py-0.5 rounded shadow">
+                                    ${player.tag}
+                                </span>
+
+                                <!-- Quick Play Overlay Button -->
+                                <button onclick="openVideoModal('${player.videoId}', '${escapeQuotes(player.name)} - Highlights')" class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition">
+                                    <div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-200">
+                                        <i class="fa-solid fa-play ml-0.5 text-lg"></i>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="p-5 space-y-2">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="font-black text-lg text-white group-hover:text-brand-gold transition">${player.name}</h3>
+                                </div>
+                                <p class="text-xs text-brand-gold font-medium flex items-center gap-1.5">
+                                    <i class="fa-solid fa-school text-gray-400"></i> ${player.school}
+                                </p>
+                                <p class="text-xs text-gray-400 leading-relaxed pt-1">
+                                    ${player.bio}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer Controls -->
+                        <div class="px-5 pb-5 pt-2 flex items-center gap-2 border-t border-brand-border/40 mt-auto">
+                            <button onclick="openVideoModal('${player.videoId}', '${escapeQuotes(player.name)} - ${escapeQuotes(player.position)}')" class="flex-1 py-2 bg-brand-cardHover hover:bg-brand-green text-white font-bold text-xs rounded-lg transition flex items-center justify-center gap-1.5 border border-brand-border">
+                                <i class="fa-solid fa-play text-[10px]"></i> Play Highlights
+                            </button>
+                            <a href="https://www.youtube.com/watch?v=${player.videoId}" target="_blank" rel="noopener noreferrer" class="p-2 bg-black/60 hover:bg-black text-gray-400 hover:text-brand-gold border border-brand-border rounded-lg transition" title="Open directly on YouTube">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Safe quotation escape for string attributes
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'");
+        }
+
+        // Filter Player Handler
+        function filterPlayers(category) {
+            currentCategory = category;
+            
+            // Update UI buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.trim().startsWith(category) || (category === 'All' && btn.textContent.trim() === 'All')) {
+                    btn.className = "filter-btn active px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-brand-green text-white";
+                } else {
+                    btn.className = "filter-btn px-3.5 py-2 rounded-lg text-xs font-bold transition whitespace-nowrap bg-black/60 text-gray-300 hover:text-white hover:bg-brand-cardHover border border-brand-border";
+                }
+            });
+
+            renderPlayers();
+        }
+
+        // Reset All Filters
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            searchQuery = '';
+            filterPlayers('All');
+        }
+
+        // Scroll helper
+        function scrollToRoster() {
+            document.getElementById('roster-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Video Modal Controller
+        function openVideoModal(videoId, title) {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            const modalTitle = document.getElementById('modal-title');
+            const externalLink = document.getElementById('modal-external-link');
+
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modalTitle.innerHTML = `<i class="fa-brands fa-youtube text-red-500"></i> ${title}`;
+            externalLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+
+            iframe.src = '';
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event Listeners
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderPlayers();
+        });
+
+        // Close Modal on backdrop click
+        document.getElementById('video-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'video-modal') {
+                closeVideoModal();
+            }
+        });
+
+        // Close on Escape Key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        // Initial Initialization
+        window.onload = function() {
+            renderPlayers();
+        };
+    </script>
 </body>
 </html>
+```
+Attachments area
+Preview YouTube video Get to know the U17 Reggae Boyz #football #jamaicanteam #reggaeboyz #roadtoqatar2025Preview YouTube video Get to know the U17 Reggae Boyz #football #jamaicanteam #reggaeboyz #roadtoqatar2025
+
+Preview YouTube video CRAZY SKILL PART2 🤯#shorts #footballPreview YouTube video CRAZY SKILL PART2 🤯#shorts #football
+
 
