@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MV Empire Scout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0d2b45;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #e5a93d;
+            padding: 0.75rem 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #0d2b45;
+            color: #fff;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MV Empire Scout</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#players">Players</a>
+        <a href="#coaches">Coaches</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main id="home">
+        <div class="hero">
+            <h2>Discover Top Talent</h2>
+            <p>Connecting the next generation of football stars with elite scouts and coaches.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 MV Empire Scout</p>
+    </footer>
+</body>
+</htm
